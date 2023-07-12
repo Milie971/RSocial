@@ -1,34 +1,65 @@
 import { useState } from "react";
 import { Tweet } from "./Tweet";
 
+const DEFAULT_TWEET = [
+  {
+    id: 0,
+    name: "Emilie",
+    content: "React c'est dur mais c'est cool",
+    like: 10,
+  },
+  {
+    id: 1,
+    name: "Aryan",
+    content: "Money",
+    like: 100,
+  },
+  {
+    id: 2,
+    name: "Mymy",
+    content: "Lecture, Patisserie, Plage",
+    like: 10,
+  },
+  {
+    id: 3,
+    name: "Larry",
+    content: "Le chien noir",
+    like: 1,
+  },
+];
 import(Tweet);
 function App() {
-  let [tweets, setTweets] = useState();
-  let [username, setUsername] = useState("Emilie");
-  const addLetter = () => {
-    username += "y";
-  };
+  let [tweets, setTweets] = useState(DEFAULT_TWEET);
+
+  const tweetsList = tweets.map((tweet) => {
+    return (
+      <Tweet
+        key={tweet.id}
+        name={tweet.name}
+        content={tweet.content}
+        like={tweet.like}
+      />
+    );
+  });
+  // let [username, setUsername] = useState("Emilie");
+  // const addLetter = () => {
+  //   username += "y";
+  // };
   return (
     <div>
-      <p>{username}</p>
-      <button onClick={addLetter}>Ajoute</button>
+      {/* <p>{username}</p>
+      <button onClick={addLetter}>Ajoute</button> */}
       <div className="tweet-container">
-        <Tweet name="Cloe" content="J'ai hate d'aller en Guadeloupe" like={5} />
-        <Tweet
-          name="Victoria"
-          content="Je vais voir mes filleuiles"
-          like={15}
-        />
-        <Tweet
-          name="Larry"
-          content="Il est temps de mettre en place mes projets"
-          like={20}
-        />
-        <Tweet
-          name="Emilie"
-          content="React c'est dur mais c'est cool"
-          like={10}
-        />
+        {tweets.map((tweet) => {
+          return (
+            <Tweet
+              key={tweet.id}
+              name={tweet.name}
+              content={tweet.content}
+              like={tweet.like}
+            />
+          );
+        })}
       </div>
     </div>
   );
