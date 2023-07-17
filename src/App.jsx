@@ -29,8 +29,10 @@ const DEFAULT_TWEET = [
 ];
 import(Tweet);
 function App() {
-  let [tweets, setTweets] = useState(DEFAULT_TWEET);
-
+  const [tweets, setTweets] = useState(DEFAULT_TWEET);
+  const onDelete = (tweetId) => {
+    setTweets((curr) => curr.filter((tweet) => tweet.id !== tweetID));
+  };
   const tweetsList = tweets.map((tweet) => {
     return (
       <Tweet
@@ -38,6 +40,7 @@ function App() {
         name={tweet.name}
         content={tweet.content}
         like={tweet.like}
+        onDelete={() => {}}
       />
     );
   });
@@ -54,9 +57,13 @@ function App() {
           return (
             <Tweet
               key={tweet.id}
+              id={tweet.id}
               name={tweet.name}
               content={tweet.content}
               like={tweet.like}
+              onDelete={(id) => {
+                console.log("DELETE", id);
+              }}
             />
           );
         })}

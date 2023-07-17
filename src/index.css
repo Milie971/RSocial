@@ -8,6 +8,7 @@
   padding: 8px;
   width: fit-content;
   min-width: 200px;
+  position: relative;
 }
 
 .tweet h3,
@@ -21,4 +22,13 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.tweet .delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
